@@ -1,0 +1,34 @@
+---
+import { profileData } from '../data/profile.data';
+---
+
+<header class="fixed top-0 w-full z-50 bg-slate-950/80 backdrop-blur-md border-b border-white/5 transition-all duration-300">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16">
+      <!-- Logo/Name -->
+      <div class="flex-shrink-0">
+        <a href="#" class="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary-400 to-primary-200">
+          JAGR<span class="text-primary-500">.</span>
+        </a>
+      </div>
+      
+      <!-- Desktop Nav -->
+      <nav class="hidden md:block">
+        <ul class="flex space-x-8 text-sm font-medium">
+          <li><a href="#perfil" class="text-slate-300 hover:text-white transition-colors">Perfil</a></li>
+          <li><a href="#stack" class="text-slate-300 hover:text-white transition-colors">Stack</a></li>
+          <li><a href="#experiencia" class="text-slate-300 hover:text-white transition-colors">Experiencia</a></li>
+          <li><a href="#proyectos" class="text-slate-300 hover:text-white transition-colors">Proyectos</a></li>
+          <li><a href="#contacto" class="text-slate-300 hover:text-white transition-colors">Contacto</a></li>
+        </ul>
+      </nav>
+
+      <!-- Action Button -->
+      <div class="hidden md:block">
+        <a href="/cv-jorge-arturo-gonzalez-rodriguez.pdf" download="cv-jorge-arturo-gonzalez-rodriguez.pdf" class="px-4 py-2 rounded-lg bg-primary-600 hover:bg-primary-500 text-white text-sm font-medium transition-all shadow-[0_0_15px_rgba(37,99,235,0.3)] hover:shadow-[0_0_20px_rgba(37,99,235,0.5)]">
+          Descargar CV
+        </a>
+      </div>
+    </div>
+  </div>
+</header>

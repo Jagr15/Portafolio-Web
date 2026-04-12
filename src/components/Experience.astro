@@ -1,0 +1,58 @@
+---
+import { profileData } from '../data/profile.data';
+---
+
+<section id="experiencia" class="py-20 border-t border-white/5 bg-slate-900/50">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="mb-12">
+      <h2 class="text-3xl font-bold text-white mb-2">Experiencia Laboral</h2>
+      <div class="w-16 h-1 bg-primary-500 rounded-full"></div>
+    </div>
+    
+    <div class="space-y-8 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-slate-700 before:to-transparent">
+      {profileData.experience.map((exp, index) => (
+        <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
+          <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-slate-900 bg-slate-800 group-hover:bg-primary-500 group-hover:border-primary-500/30 text-slate-400 group-hover:text-white shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 transition-colors z-10">
+            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10 10-4.486 10-10S17.514 2 12 2zm0 18c-4.411 0-8-3.589-8-8s3.589-8 8-8 8 3.589 8 8-3.589 8-8 8z"></path><circle cx="12" cy="12" r="4"></circle></svg>
+          </div>
+          
+          <div 
+            class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] p-6 rounded-2xl bg-slate-800 border border-slate-700/50 hover:border-primary-500/50 hover:shadow-primary-500/10 shadow-lg cursor-pointer transition-all ml-4 md:ml-0 group/card"
+            data-detail-trigger="experience"
+            data-payload={JSON.stringify(exp)}
+          >
+            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2">
+              <h3 class="font-bold text-lg text-white group-hover/card:text-primary-400 transition-colors">{exp.role}</h3>
+              <span class="text-xs font-medium px-2 py-1 bg-slate-700 text-slate-300 rounded-md mt-1 sm:mt-0">{exp.period}</span>
+            </div>
+            <div class="text-primary-400 font-medium mb-4 text-sm">{exp.company}</div>
+            <ul class="space-y-2 mb-4">
+              {exp.description.map(desc => (
+                <li class="relative pl-4 text-sm text-slate-400 before:absolute before:left-0 before:top-2 before:w-1.5 before:h-1.5 before:bg-slate-600 before:rounded-full">
+                  {desc}
+                </li>
+              ))}
+            </ul>
+            <div class="pt-4 border-t border-slate-700/50 flex justify-end">
+              <span class="text-xs font-bold uppercase tracking-wider text-primary-500 flex items-center group-hover/card:text-primary-400 transition-colors">
+                Ver detalles
+                <svg class="w-4 h-4 ml-1 group-hover/card:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+              </span>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script>
+  document.querySelectorAll('[data-detail-trigger="experience"]').forEach(trigger => {
+    trigger.addEventListener('click', () => {
+      const payload = trigger.getAttribute('data-payload');
+      if (payload && (window as any).openDetailModal) {
+         (window as any).openDetailModal('experience', payload);
+      }
+    });
+  });
+</script>

@@ -1,0 +1,93 @@
+---
+import { profileData } from '../data/profile.data';
+---
+
+<section id="proyectos" class="py-24 border-t border-white/5 relative bg-slate-950/50">
+  <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-primary-900/10 via-transparent to-transparent pointer-events-none"></div>
+  
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <div class="mb-16">
+      <h2 class="text-3xl font-bold text-white mb-3">Proyectos Destacados</h2>
+      <div class="w-16 h-1.5 bg-gradient-to-r from-primary-500 to-blue-400 rounded-full"></div>
+      <p class="mt-5 text-slate-400 text-lg max-w-2xl">Selección de arquitecturas, sistemas SaaS e integraciones empresariales diseñadas para alta disponibilidad.</p>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+      {profileData.projects.map(project => (
+        <div class="group bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden hover:border-primary-500/50 transition-all duration-300 shadow-xl hover:shadow-[0_0_30px_rgba(37,99,235,0.15)] flex flex-col relative top-0 hover:-top-2">
+          
+          <!-- Cabecera Visual Unificada -->
+          <div 
+            data-detail-trigger="project"
+            data-payload={JSON.stringify(project)}
+            class="h-64 sm:h-72 w-full bg-slate-950 relative overflow-hidden border-b border-slate-800/80 cursor-pointer group/header"
+          >
+              <img 
+                src={project.coverImage} 
+                alt={`Portada de ${project.title}`} 
+                class={`w-full h-full object-cover object-${project.imagePosition || 'top'} opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500`}
+                loading="lazy"
+              />
+              <!-- Hover Overlay para indicar interacción -->
+              <div class="absolute inset-0 bg-slate-900/60 opacity-0 group-hover/header:opacity-100 transition-opacity duration-300 flex items-center justify-center z-10 backdrop-blur-sm">
+                <span class="px-6 py-3 rounded-full bg-primary-600 border border-primary-500 text-white font-medium shadow-xl flex items-center translate-y-4 group-hover/header:translate-y-0 transition-transform duration-300">
+                  <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
+                  Ver Detalles
+                </span>
+              </div>
+              <!-- Gradient Overlay -->
+              <div class="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-slate-900 to-transparent pointer-events-none"></div>
+              <!-- Tipo de Proyecto Badge Flotante -->
+              <div class="absolute top-4 left-4 z-20">
+                  <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-slate-900/80 border border-primary-500/30 text-primary-300 backdrop-blur-md shadow-lg pointer-events-auto">
+                    {project.type}
+                  </span>
+              </div>
+          </div>
+          
+          <!-- Contenido -->
+          <div class="p-8 flex-1 flex flex-col relative z-10 bg-slate-900">
+            <h3 class="text-2xl font-bold text-white mb-3 group-hover:text-primary-400 transition-colors">{project.title}</h3>
+            
+            <p class="text-slate-400 text-[15px] leading-relaxed mb-6">
+              {project.description}
+            </p>
+            
+            <!-- Bloque de resolución/impacto -->
+            {project.impact && (
+              <div class="mb-8 p-4 rounded-xl bg-primary-950/30 border border-primary-900/50 flex items-start">
+                  <svg class="w-5 h-5 text-primary-400 mr-3 mt-0.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                  </svg>
+                  <div>
+                    <span class="block text-sm font-semibold text-white/90 mb-1">Impacto & Solución</span>
+                    <span class="text-sm text-slate-400 leading-snug">{project.impact}</span>
+                  </div>
+              </div>
+            )}
+            
+            <!-- Tecnologías al final -->
+            <div class="flex flex-wrap gap-2 mt-auto pt-5 border-t border-slate-800">
+              {project.techStack.map(tech => (
+                <span class="text-xs font-medium text-slate-300 bg-slate-800/80 hover:bg-slate-700 py-1.5 px-3 rounded-lg border border-slate-700 transition-colors">
+                  {tech}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script>
+  document.querySelectorAll('[data-detail-trigger="project"]').forEach(trigger => {
+    trigger.addEventListener('click', () => {
+      const payload = trigger.getAttribute('data-payload');
+      if (payload && (window as any).openDetailModal) {
+         (window as any).openDetailModal('project', payload);
+      }
+    });
+  });
+</script>

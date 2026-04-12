@@ -1,0 +1,31 @@
+---
+import { profileData } from '../data/profile.data';
+---
+
+<section id="stack" class="py-20 border-t border-white/5">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="mb-12">
+      <h2 class="text-3xl font-bold text-white mb-2">Stack y Herramientas</h2>
+      <div class="w-16 h-1 bg-primary-500 rounded-full"></div>
+      <p class="mt-4 text-slate-400">Tecnologías y herramientas con las que trabajo en el día a día.</p>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {profileData.stack.map(group => (
+        <div class="bg-slate-900 border border-slate-800 rounded-xl p-6 hover:border-primary-500/30 transition-colors group">
+          <h3 class="text-lg font-semibold text-white mb-4 flex items-center">
+            <span class="w-2 h-2 rounded-full bg-primary-500 mr-2 group-hover:shadow-[0_0_8px_rgba(59,130,246,0.8)] transition-all"></span>
+            {group.category}
+          </h3>
+          <div class="flex flex-wrap gap-2">
+            {group.items.map(item => (
+              <span class="px-3 py-1 bg-slate-800 text-slate-300 text-sm rounded-md border border-slate-700 hover:bg-primary-900/30 hover:border-primary-500/30 hover:text-primary-300 transition-colors cursor-default">
+                {item}
+              </span>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,26 @@
+---
+import { profileData } from '../data/profile.data';
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="bg-slate-950 border-t border-white/5 py-12">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-6">
+    <div class="text-center md:text-left">
+      <a href="#" class="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary-400 to-primary-200 block mb-2">
+        JAGR<span class="text-primary-500">.</span>
+      </a>
+      <p class="text-slate-500 text-sm">
+        &copy; {currentYear} {profileData.name}.<br/>Todos los derechos reservados.
+      </p>
+    </div>
+    
+    <div class="flex items-center space-x-6">
+      <a href={`mailto:${profileData.email}`} class="text-slate-400 hover:text-white transition-colors" aria-label="Email">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+      </a>
+      <a href="/cv-jorge-arturo-gonzalez-rodriguez.pdf" download="cv-jorge-arturo-gonzalez-rodriguez.pdf" class="text-slate-400 hover:text-white transition-colors" aria-label="Descargar CV">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+      </a>
+    </div>
+  </div>
+</footer>
