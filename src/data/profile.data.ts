@@ -8,32 +8,24 @@ export const profileData = {
     "Desarrollador Backend Senior con experiencia en Java y Spring Boot, especializado en desarrollo y mantenimiento de microservicios y APIs REST en entornos productivos. Experiencia en soporte L3, análisis de incidencias críticas, revisión de logs, validación de despliegues y seguimiento de continuidad operativa. Con sólidos conocimientos en Docker, Kubernetes, SQL y buenas prácticas de desarrollo para sistemas empresariales enfocados en escalabilidad y mitigación de fallos.",
   stack: [
     {
-      category: "Lenguajes",
-      items: ["Java (7, 8, 17, 21)", "SQL", "PHP 8+", "Python"],
+      category: "Stack Principal",
+      items: ["Java (17, 21)", "Spring Boot", "Microservicios", "APIs REST", "JPA/Hibernate", "SQL"],
     },
     {
-      category: "Backend",
-      items: ["Spring Boot", "Microservicios", "APIs REST", "JPA/Hibernate", "Laravel", "FastAPI"],
+      category: "Infra & Bases de Datos",
+      items: ["PostgreSQL", "MySQL", "Docker", "Kubernetes", "GitLab CI", "Maven"],
     },
     {
-      category: "Soporte y Producción",
-      items: ["Soporte L3", "Análisis de logs", "Troubleshooting", "Validación post-deploy"],
+      category: "Soporte, Testing y Analítica",
+      items: ["Soporte L3", "Análisis de logs", "Troubleshooting", "JUnit", "Testcontainers"],
     },
     {
-      category: "Bases de Datos",
-      items: ["MySQL", "PostgreSQL", "Oracle", "SQL Server"],
+      category: "Stack Complementario",
+      items: ["PHP 8+", "Laravel", "Python", "FastAPI"],
     },
     {
-      category: "DevOps",
-      items: ["Docker", "Kubernetes", "Git", "GitLab CI/CD", "Maven"],
-    },
-    {
-      category: "Testing",
-      items: ["JUnit", "Testcontainers", "PHPUnit"],
-    },
-    {
-      category: "Sistemas & Herramientas",
-      items: ["Linux/Ubuntu", "IntelliJ IDEA", "Eclipse", "VS Code", "Postman", "pgAdmin"],
+      category: "Herramientas de Trabajo",
+      items: ["Git", "IntelliJ IDEA", "Postman", "Linux", "pgAdmin"],
     },
   ],
   experience: [

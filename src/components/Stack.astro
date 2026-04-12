@@ -10,22 +10,24 @@ import { profileData } from '../data/profile.data';
       <p class="mt-4 text-slate-400">Tecnologías y herramientas con las que trabajo en el día a día.</p>
     </div>
     
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      {profileData.stack.map(group => (
-        <div class="bg-slate-900 border border-slate-800 rounded-xl p-6 hover:border-primary-500/30 transition-colors group">
-          <h3 class="text-lg font-semibold text-white mb-4 flex items-center">
-            <span class="w-2 h-2 rounded-full bg-primary-500 mr-2 group-hover:shadow-[0_0_8px_rgba(59,130,246,0.8)] transition-all"></span>
+    <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+      {profileData.stack.map(group => {
+        const isPrincipal = group.category === "Stack Principal";
+        return (
+        <div class={`rounded-xl p-6 transition-all group ${isPrincipal ? 'md:col-span-2 xl:col-span-3 bg-gradient-to-br from-slate-800/80 to-slate-900/80 border border-primary-900/50 shadow-lg shadow-primary-900/10' : 'bg-slate-900/80 border border-slate-800/80 hover:border-slate-700'}`}>
+          <h3 class={`text-lg font-semibold mb-4 flex items-center ${isPrincipal ? 'text-primary-300' : 'text-white'}`}>
+            <span class={`w-2 h-2 rounded-full mr-2 group-hover:shadow-[0_0_8px_rgba(59,130,246,0.8)] transition-all ${isPrincipal ? 'bg-primary-400' : 'bg-slate-600 group-hover:bg-primary-500'}`}></span>
             {group.category}
           </h3>
-          <div class="flex flex-wrap gap-2">
+          <div class="flex flex-wrap gap-2.5">
             {group.items.map(item => (
-              <span class="px-3 py-1 bg-slate-800 text-slate-300 text-sm rounded-md border border-slate-700 hover:bg-primary-900/30 hover:border-primary-500/30 hover:text-primary-300 transition-colors cursor-default">
+              <span class={`px-3 py-1.5 text-sm rounded-md border transition-colors cursor-default ${isPrincipal ? 'bg-primary-950/40 text-primary-200 border-primary-800/50 hover:bg-primary-900/60 hover:border-primary-500/50' : 'bg-slate-800/50 text-slate-300 border-slate-700/50 hover:bg-slate-800 hover:border-slate-600 hover:text-white'}`}>
                 {item}
               </span>
             ))}
           </div>
         </div>
-      ))}
+      )})}
     </div>
   </div>
 </section>
