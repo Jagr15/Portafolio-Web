@@ -12,7 +12,7 @@ export const profileData = {
       items: ["Java (17, 21)", "Spring Boot", "Microservicios", "APIs REST", "JPA/Hibernate", "SQL"],
     },
     {
-      category: "Infra & Bases de Datos",
+      category: "Infra y Bases de Datos",
       items: ["PostgreSQL", "MySQL", "Docker", "Kubernetes", "GitLab CI", "Maven"],
     },
     {
