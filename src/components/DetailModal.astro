@@ -129,6 +129,14 @@
       <span id="dm-image-lightbox-counter">Captura 1 de 1</span>
     </div>
     <img id="dm-image-lightbox-src" src="" alt="Captura ampliada" class="max-w-full max-h-full object-contain rounded-xl border border-slate-700/80 shadow-2xl" />
+    <div id="dm-image-lightbox-fallback" class="hidden max-w-md w-full rounded-xl border border-slate-700/80 bg-slate-900/85 p-6 sm:p-8 text-center shadow-2xl">
+      <div class="w-12 h-12 mx-auto mb-4 rounded-full bg-slate-800 border border-slate-700 flex items-center justify-center">
+        <svg class="w-6 h-6 text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h18M3 19h18M5 5v14m14-14v14M9 10l2 2 4-4"></path></svg>
+      </div>
+      <p id="dm-image-lightbox-fallback-text" class="text-slate-300 text-sm sm:text-base leading-relaxed">
+        No fue posible mostrar la captura ampliada en este momento.
+      </p>
+    </div>
   </div>
 </div>
 
@@ -165,6 +173,8 @@
   const lightboxCloseBtn = document.getElementById('dm-image-lightbox-close');
   const lightboxImg = document.getElementById('dm-image-lightbox-src') as HTMLImageElement;
   const lightboxCounter = document.getElementById('dm-image-lightbox-counter');
+  const lightboxFallback = document.getElementById('dm-image-lightbox-fallback');
+  const lightboxFallbackText = document.getElementById('dm-image-lightbox-fallback-text');
   
   function getSafeValue(val: any) {
     if (!val) return null;
@@ -199,21 +209,58 @@
       return `<ul class="list-injected pl-2 marker:text-slate-600">${items.map(i => `<li>${i}</li>`).join('')}</ul>`;
   }
 
-  function dmSyncExpandedImage() {
-    if (!lightbox || lightbox.classList.contains('hidden') || !lightboxImg || modalActiveScreenshots.length === 0) return;
-    const currentSrc = modalActiveScreenshots[modalCurrentIndex];
-    if (!currentSrc) return;
-    lightboxImg.src = currentSrc;
-    if (lightboxCounter) {
-      lightboxCounter.textContent = `Captura ${modalCurrentIndex + 1} de ${modalActiveScreenshots.length}`;
+  function dmShowLightboxFallback(message: string) {
+    if (lightboxFallbackText) lightboxFallbackText.textContent = message;
+    if (lightboxFallback) lightboxFallback.classList.remove('hidden');
+    if (lightboxImg) {
+      lightboxImg.classList.add('hidden');
+      lightboxImg.removeAttribute('src');
     }
   }
 
+  function dmHideLightboxFallback() {
+    if (lightboxFallback) lightboxFallback.classList.add('hidden');
+    if (lightboxImg) lightboxImg.classList.remove('hidden');
+  }
+
+  function dmSyncExpandedImage() {
+    if (!lightboxImg) return;
+    if (modalActiveScreenshots.length === 0) {
+      if (lightboxCounter) lightboxCounter.textContent = 'Captura 0 de 0';
+      dmShowLightboxFallback('Esta evidencia no tiene captura disponible para ampliar.');
+      return;
+    }
+
+    const currentSrc = modalActiveScreenshots[modalCurrentIndex];
+    if (!currentSrc) {
+      if (lightboxCounter) lightboxCounter.textContent = 'Captura no disponible';
+      dmShowLightboxFallback('No se encontró la captura activa para mostrar en grande.');
+      return;
+    }
+
+    if (lightboxCounter) {
+      lightboxCounter.textContent = `Captura ${modalCurrentIndex + 1} de ${modalActiveScreenshots.length}`;
+    }
+
+    const expectedSrc = currentSrc;
+    const preload = new Image();
+    preload.onload = () => {
+      if (modalActiveScreenshots[modalCurrentIndex] !== expectedSrc) return;
+      lightboxImg.src = expectedSrc;
+      dmHideLightboxFallback();
+    };
+    preload.onerror = () => {
+      if (modalActiveScreenshots[modalCurrentIndex] !== expectedSrc) return;
+      dmShowLightboxFallback('No fue posible cargar esta captura. Intenta con otra imagen del carrusel.');
+    };
+    preload.src = expectedSrc;
+  }
+
   function dmOpenExpandedImage() {
-    if (!lightbox || !lightboxImg || modalActiveScreenshots.length === 0) return;
-    dmSyncExpandedImage();
+    if (!lightbox || !lightboxImg) return;
     lightbox.classList.remove('hidden');
     lightbox.classList.add('flex');
+    dmSyncExpandedImage();
   }
 
   function dmCloseExpandedImage() {
@@ -226,6 +273,7 @@
     if (!payloadString) return;
     const data = JSON.parse(payloadString);
     if (!data) return;
+    dmCloseExpandedImage();
 
     // Reset layout
     if(dMediaCol) dMediaCol.classList.remove('hidden');
