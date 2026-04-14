@@ -87,6 +87,11 @@
                 <svg class="w-5 h-5 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
               </button>
 
+              <button id="dm-expand-trigger" class="absolute top-3 right-3 px-3 py-1.5 rounded-lg bg-slate-900/85 border border-slate-700/80 text-slate-200 hover:text-white hover:border-primary-500/70 hover:bg-slate-800/90 transition-all shadow-md z-20 flex items-center gap-2 text-xs font-medium">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 1v4m0 0h-4m4 0l-5-5"></path></svg>
+                Ver captura completa
+              </button>
+
               <img id="dm-image" src="" alt="Screenshot" class="w-full h-full object-contain transition-opacity duration-300" />
               
               <div id="dm-loader" class="absolute inset-0 flex items-center justify-center bg-slate-950/80 z-10 transition-opacity duration-300">
@@ -114,6 +119,19 @@
   </div>
 </div>
 
+<div id="dm-image-lightbox" class="fixed inset-0 z-[120] hidden items-center justify-center p-4 sm:p-8">
+  <div id="dm-image-lightbox-overlay" class="absolute inset-0 bg-slate-950/95 backdrop-blur-sm"></div>
+  <div class="relative z-10 w-full h-full flex items-center justify-center">
+    <button id="dm-image-lightbox-close" class="absolute top-2 right-2 sm:top-4 sm:right-4 p-3 rounded-full bg-slate-800/90 text-slate-200 hover:text-white border border-slate-700 hover:border-primary-500 transition-all shadow-lg" aria-label="Cerrar vista ampliada">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+    </button>
+    <div class="absolute top-3 left-3 sm:top-5 sm:left-5 px-3 py-1.5 rounded-md bg-slate-900/85 border border-slate-700/80 text-slate-300 text-xs font-semibold">
+      <span id="dm-image-lightbox-counter">Captura 1 de 1</span>
+    </div>
+    <img id="dm-image-lightbox-src" src="" alt="Captura ampliada" class="max-w-full max-h-full object-contain rounded-xl border border-slate-700/80 shadow-2xl" />
+  </div>
+</div>
+
 <style>
   .custom-scrollbar::-webkit-scrollbar { width: 6px; height: 6px; }
   .custom-scrollbar::-webkit-scrollbar-track { background: rgba(30, 41, 59, 0.5); border-radius: 10px; }
@@ -138,9 +156,15 @@
   const counterEl = document.getElementById('dm-counter');
   const prevBtn = document.getElementById('dm-prev');
   const nextBtn = document.getElementById('dm-next');
+  const expandBtn = document.getElementById('dm-expand-trigger');
   const thumbnailsContainer = document.getElementById('dm-thumbnails');
   const dMediaCol = document.getElementById('dm-media-col');
   const dTextCol = document.getElementById('dm-text-col');
+  const lightbox = document.getElementById('dm-image-lightbox');
+  const lightboxOverlay = document.getElementById('dm-image-lightbox-overlay');
+  const lightboxCloseBtn = document.getElementById('dm-image-lightbox-close');
+  const lightboxImg = document.getElementById('dm-image-lightbox-src') as HTMLImageElement;
+  const lightboxCounter = document.getElementById('dm-image-lightbox-counter');
   
   function getSafeValue(val: any) {
     if (!val) return null;
@@ -173,6 +197,29 @@
   function renderList(items: string[]) {
       if(!items || items.length === 0) return null;
       return `<ul class="list-injected pl-2 marker:text-slate-600">${items.map(i => `<li>${i}</li>`).join('')}</ul>`;
+  }
+
+  function dmSyncExpandedImage() {
+    if (!lightbox || lightbox.classList.contains('hidden') || !lightboxImg || modalActiveScreenshots.length === 0) return;
+    const currentSrc = modalActiveScreenshots[modalCurrentIndex];
+    if (!currentSrc) return;
+    lightboxImg.src = currentSrc;
+    if (lightboxCounter) {
+      lightboxCounter.textContent = `Captura ${modalCurrentIndex + 1} de ${modalActiveScreenshots.length}`;
+    }
+  }
+
+  function dmOpenExpandedImage() {
+    if (!lightbox || !lightboxImg || modalActiveScreenshots.length === 0) return;
+    dmSyncExpandedImage();
+    lightbox.classList.remove('hidden');
+    lightbox.classList.add('flex');
+  }
+
+  function dmCloseExpandedImage() {
+    if (!lightbox) return;
+    lightbox.classList.remove('flex');
+    lightbox.classList.add('hidden');
   }
 
   function openDetailModal(type: 'project' | 'experience', payloadString: string) {
@@ -250,10 +297,17 @@
     if (type === 'project' && data.screenshots && data.screenshots.length > 0) {
        modalActiveScreenshots = data.screenshots;
        modalCurrentIndex = 0;
+       if (expandBtn) expandBtn.classList.remove('hidden');
        renderThumbnails();
        dmUpdateImage();
     } else {
        // Ocultar bloque media si no hay screenshots
+       modalActiveScreenshots = [];
+       modalCurrentIndex = 0;
+       if (expandBtn) expandBtn.classList.add('hidden');
+       if (thumbnailsContainer) thumbnailsContainer.innerHTML = '';
+       if (counterEl) counterEl.textContent = '1 / 1';
+       if (imgEl) imgEl.src = '';
        if(dMediaCol) dMediaCol.classList.add('hidden');
        if(dTextCol) { dTextCol.classList.remove('lg:col-span-7'); dTextCol.classList.add('lg:col-span-12'); }
     }
@@ -269,6 +323,7 @@
   }
 
   function dmCloseModal() {
+    dmCloseExpandedImage();
     if (dModal) {
       dModal.classList.remove('opacity-100');
       dModal.classList.add('opacity-0');
@@ -296,6 +351,7 @@
     counterEl.textContent = `${modalCurrentIndex + 1} / ${modalActiveScreenshots.length}`;
     dmUpdateButtonsState();
     dmUpdateThumbnailsState();
+    dmSyncExpandedImage();
   }
 
   function dmUpdateButtonsState() {
@@ -357,7 +413,17 @@
   if(dOverlay) dOverlay.addEventListener('click', dmCloseModal);
   if(prevBtn) prevBtn.addEventListener('click', dmPrevSlide);
   if(nextBtn) nextBtn.addEventListener('click', dmNextSlide);
+  if(expandBtn) expandBtn.addEventListener('click', dmOpenExpandedImage);
+  if(lightboxOverlay) lightboxOverlay.addEventListener('click', dmCloseExpandedImage);
+  if(lightboxCloseBtn) lightboxCloseBtn.addEventListener('click', dmCloseExpandedImage);
   document.addEventListener('keydown', (e) => {
+    if(lightbox && !lightbox.classList.contains('hidden')) {
+      if(e.key === 'Escape') dmCloseExpandedImage();
+      if(e.key === 'ArrowRight') dmNextSlide();
+      if(e.key === 'ArrowLeft') dmPrevSlide();
+      return;
+    }
+
     if(!dModal || dModal.classList.contains('hidden')) return;
     if(e.key === 'Escape') dmCloseModal();
     if(e.key === 'ArrowRight') dmNextSlide();
