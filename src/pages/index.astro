@@ -6,27 +6,24 @@ import Profile from '../components/Profile.astro';
 import Stack from '../components/Stack.astro';
 import Experience from '../components/Experience.astro';
 import Projects from '../components/Projects.astro';
+import PortfolioProjects from '../components/PortfolioProjects.astro';
 import Contact from '../components/Contact.astro';
 import Footer from '../components/Footer.astro';
-import DetailModal from '../components/DetailModal.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 
 <Layout
-	title="Jorge Arturo Gonzalez Rodriguez | Desarrollador PHP y Laravel Backend"
-	description="Portfolio de Jorge Arturo Gonzalez Rodriguez, desarrollador backend con enfoque en PHP, Laravel, integración de APIs REST y SOAP, y bases de datos MySQL y SQL Server."
+	title="Software Engineer & Backend Specialist | Jorge Arturo"
+	description="Portafolio de Jorge Arturo, Ingeniero de Software especializado en Backend con Java y PHP, microservicios y despliegues orquestados."
 >
 	<Header />
-	<main>
+	<main class="overflow-x-hidden">
 		<Hero />
 		<Profile />
-		<Stack />
 		<Experience />
 		<Projects />
+		<PortfolioProjects />
+		<Stack />
 		<Contact />
 	</main>
 	<Footer />
-	<DetailModal />
 </Layout>

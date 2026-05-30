@@ -1,176 +1,157 @@
 export const profileData = {
-  name: "Jorge Arturo Gonzalez Rodriguez",
-  role: "Desarrollador PHP / Laravel Backend | Integración de APIs REST y SOAP | MySQL / SQL Server",
-  location: "Acapulco, Guerrero, México",
-  email: "artglezrodriguez@gmail.com",
-  phone: "+52 729-922-0102",
-  summary:
-    "Desarrollador backend con experiencia en aplicaciones web y servicios con PHP y Laravel, enfocado en integración de APIs REST y SOAP para procesos empresariales. Trabajo en construcción y mantenimiento de módulos de negocio, integración entre sistemas y flujos de validación, transformación y almacenamiento de datos. También cuento con experiencia en soporte a producción, resolución de incidencias, optimización de consultas y operación en entornos Linux, priorizando soluciones funcionales, mantenibles y orientadas al negocio.",
-  stack: [
-    {
-      category: "Stack Principal",
-      items: ["PHP 8+", "Laravel", "APIs REST", "SOAP", "SQL", "MySQL", "SQL Server"],
-    },
-    {
-      category: "Backend y Arquitectura",
-      items: ["PHP", "Laravel", "Spring Boot", "Micronaut", "MVC", "Microservicios", "APIs REST", "JPA", "Hibernate", "FastAPI"],
-    },
-    {
-      category: "Bases de Datos",
-      items: ["MySQL", "PostgreSQL", "Oracle", "Microsoft SQL Server", "PL/SQL"],
-    },
-    {
-      category: "Frontend",
-      items: ["Angular", "React", "Blade", "Bootstrap", "HTML", "jQuery", "CSS"],
-    },
-    {
-      category: "DevOps y Entorno",
-      items: ["Docker", "Kubernetes", "Git", "GitLab", "CI/CD", "Jenkins", "Linux", "Ubuntu", "Maven"],
-    },
-    {
-      category: "Herramientas",
-      items: ["IntelliJ IDEA", "Eclipse", "Visual Studio Code", "Postman", "Composer", "NPM"],
-    },
-    {
-      category: "Integración y Formatos",
-      items: ["XML", "GraphQL", "JSON", "YAML", "SOAP", "REST"],
-    },
-    {
-      category: "Calidad y Trabajo Técnico",
-      items: ["PHPUnit", "Testing", "Principios SOLID", "Agile y Scrum", "Git Flow"],
-    },
-  ],
+  hero: {
+    headline: "Software Engineer & Backend Specialist",
+    subheadline: "Diseñando arquitecturas robustas y escalables. Especializado en Java (Spring Boot) y PHP (Laravel) para transformar reglas de negocio complejas en microservicios resilientes, APIs seguras y despliegues orquestados.",
+    availability: "Disponible para nuevos retos",
+    metrics: [
+      { label: "+4 Años", description: "Experiencia Profesional" },
+      { label: "Java & Laravel", description: "Ecosistemas Core" },
+      { label: "Microservicios", description: "Arquitectura & APIs" },
+      { label: "Docker & K8s", description: "Infraestructura Cloud" }
+    ]
+  },
+  about: {
+    summary: "Ingeniero de Software enfocado en el desarrollo Backend y Fullstack. Mi experiencia abarca desde la arquitectura de microservicios corporativos hasta la modernización de sistemas integrales de gestión. Me especializo en la construcción de APIs RESTful seguras, la optimización profunda de consultas en bases de datos relacionales (MySQL, PostgreSQL) y la garantía de confiabilidad del código mediante automatización de pruebas (JUnit, Testcontainers). Acostumbrado a operar en todo el ciclo de vida del software, incluyendo soporte de Nivel 3 (L3) para resolución de incidentes críticos en producción.",
+    focusAreas: [
+      "Arquitectura Backend & APIs",
+      "Optimización de Bases de Datos",
+      "Calidad de Software (Testing)",
+      "Despliegues en Contenedores"
+    ]
+  },
   experience: [
     {
-      company: "Management Consultant",
-      role: "Desarrollador Backend e Integración",
-      period: "Enero 2025 – Marzo 2026",
-      summary: "Desarrollo y mantenimiento de servicios backend para integración entre módulos internos y sistemas externos, con foco en continuidad operativa.",
-      responsibilities: [
-        "Desarrollo y mantenimiento de servicios backend para integración entre módulos y sistemas externos.",
-        "Implementación y consumo de APIs REST para intercambio de información entre plataformas.",
-        "Desarrollo de procesos de validación, transformación y almacenamiento de datos para flujos operativos.",
-        "Automatización de tareas de captura y procesamiento de información.",
-        "Monitoreo y análisis de incidencias en producción.",
-        "Optimización de procesos internos.",
-        "Participación en despliegues y soporte en entornos de servidor.",
-        "Documentación técnica de flujos, servicios e integraciones.",
-        "Apoyo en análisis de requerimientos técnicos y propuestas de mejora.",
-      ],
-      technologies: ["PHP", "Laravel", "APIs REST", "SOAP", "MySQL", "SQL Server", "Linux"],
-      achievements: [
-        "Estandarización de flujos de validación y transformación de datos en procesos operativos.",
-      ],
-      description: [
-        "Servicios backend para integrar módulos internos y sistemas externos.",
-        "Automatización de captura y procesamiento de datos operativos.",
-        "Soporte a producción, despliegues en servidor y documentación técnica.",
-      ],
+      company: "Supra Solutions",
+      role: "Fullstack Engineer (Java & Laravel)",
+      period: "Noviembre 2025 – Mayo 2026",
+      summary: "Desarrollo de aplicaciones web empresariales mediante integración de sistemas híbridos, construcción de APIs REST y optimización de procesos transaccionales backend."
+    },
+    {
+      company: "Proyecto Independiente (Más Salud)",
+      role: "Lead Fullstack Developer (Laravel)",
+      period: "Enero 2025 – Septiembre 2025",
+      summary: "Liderazgo y desarrollo end-to-end de un sistema integral de gestión de usuarios y expedientes clínicos, implementando controles de acceso estrictos y frontend reactivo."
     },
     {
       company: "Uniti Consulting",
-      role: "Backend Java y PHP",
-      period: "Enero 2023 – Diciembre 2024",
-      summary: "Desarrollo y mantenimiento de servicios backend para procesos empresariales, integración entre aplicaciones y evolución continua de módulos de negocio.",
-      responsibilities: [
-        "Desarrollo y mantenimiento de servicios backend para procesos empresariales e integración de sistemas.",
-        "Construcción y consumo de APIs REST y servicios para comunicación entre aplicaciones.",
-        "Mantenimiento y evolución de módulos backend con arquitectura MVC y lógica de negocio.",
-        "Optimización de consultas SQL.",
-        "Resolución de incidencias en producción.",
-        "Trabajo con equipos ágiles bajo Scrum.",
-        "Apoyo en despliegues y seguimiento técnico.",
-        "Desarrollo de módulos backend con PHP y Laravel.",
-        "Ajustes y mantenimiento de aplicaciones web orientadas a negocio.",
-        "Consumo e integración de servicios REST y SOAP.",
-      ],
-      technologies: ["PHP", "Laravel", "Java", "Spring Boot", "MVC", "APIs REST", "SOAP", "SQL", "MySQL", "PostgreSQL"],
-      achievements: [
-        "Evolución continua de módulos backend orientados a procesos de negocio.",
-      ],
-      description: [
-        "Desarrollo backend para procesos empresariales e integración de sistemas.",
-        "Módulos MVC con lógica de negocio, APIs REST y consumo de SOAP.",
-        "Optimización SQL, soporte a producción y colaboración en despliegues.",
-      ],
+      role: "Desarrollador Java Backend",
+      period: "Enero 2024 – Diciembre 2024",
+      summary: "Evolución de microservicios críticos en entornos de alta disponibilidad, soporte técnico L3 a producción y aseguramiento de calidad con pruebas automatizadas."
     },
+    {
+      company: "Instituto Nacional de Astrofísica, Óptica y Electrónica (INAOE)",
+      role: "Programador de Software Jr.",
+      period: "Febrero 2022 – Diciembre 2023",
+      summary: "Mantenimiento y desarrollo de soluciones de software para plataformas internas de la institución, colaborando en requerimientos y optimización de bases de código legacy."
+    }
   ],
-  projects: [
+  caseStudies: [
+    {
+      title: "Arquitectura Híbrida Empresarial",
+      context: "Supra Solutions",
+      problem: "Desconexión entre sistemas corporativos heterogéneos y latencia elevada en procesos de negocio clave.",
+      solution: "Diseño de APIs RESTful e integración de sistemas combinando la robustez del ecosistema Spring Boot con la agilidad de Laravel.",
+      impact: "Estandarización de la comunicación inter-sistemas y optimización significativa del rendimiento transaccional general.",
+      techStack: ["Java", "Spring Boot", "Laravel", "MySQL", "Docker", "APIs REST"]
+    },
+    {
+      title: "Sistema Integral de Gestión Clínica",
+      context: "Proyecto Freelance (Más Salud)",
+      problem: "Necesidad de digitalizar el ciclo de vida de pacientes con estrictos controles de acceso (RBAC) y rendimiento fluido en el manejo de grandes volúmenes de datos médicos.",
+      solution: "Desarrollo end-to-end de una plataforma web segura utilizando Laravel Sanctum para autenticación y un frontend optimizado.",
+      impact: "Digitalización total del flujo clínico, garantizando la privacidad de los datos y mejorando la eficiencia administrativa del centro.",
+      techStack: ["PHP", "Laravel", "MySQL", "Sanctum", "Bootstrap", "Blade", "DataTables"]
+    },
+    {
+      title: "Ecosistema Transaccional de Alta Disponibilidad",
+      context: "Uniti Consulting",
+      problem: "Sistemas con alto volumen de operaciones requerían tolerancia a fallos, despliegues sin interrupción y mitigación inmediata de incidentes en producción.",
+      solution: "Implementación de microservicios orquestados en contenedores, testeados exhaustivamente y respaldados por scripts de monitoreo proactivo.",
+      impact: "Reducción drástica de fallos post-despliegue mediante pruebas automatizadas y resolución acelerada de incidentes (L3) cumpliendo SLAs estrictos.",
+      techStack: ["Java 8/17", "Spring Boot", "Kubernetes", "Docker", "Testcontainers", "JUnit", "Python"]
+    }
+  ],
+  portfolioProjects: [
     {
       title: "TuCondominio",
-      id: "tucondominio",
-      type: "Plataforma SaaS",
-      coverImage: "/images/projects/tucondominio/screenshot-1.png",
-      imagePosition: "top",
-      description:
-        "Plataforma para administración condominal con backend orientado a negocio, control de accesos y módulos operativos integrados. Incluye flujo de visitantes, reservaciones, paquetería y gestión de información entre áreas.",
-      problem: "La operación diaria estaba fragmentada en procesos manuales y herramientas aisladas, lo que afectaba el seguimiento de accesos y tareas administrativas.",
-      solution: "Se implementó una plataforma web con módulos conectados, reglas de negocio centralizadas y APIs para intercambio de información entre procesos clave.",
-      contribution: "Diseño y desarrollo de backend con Laravel, modelado de datos, integración de módulos y evolución funcional del sistema.",
-      impact: "Centralizó procesos operativos y mejoró la trazabilidad de la información para residentes, administración y seguridad.",
-      techStack: ["PHP 8", "Laravel", "MySQL", "APIs REST", "Blade", "Bootstrap"],
-      screenshots: Array.from({length: 14}, (_, i) => `/images/projects/tucondominio/screenshot-${i+1}.png`),
+      category: "Plataforma SaaS",
+      description: "Plataforma para administración condominal con backend orientado a negocio, control de accesos y módulos operativos integrados.",
+      impact: "Centralizó procesos operativos y mejoró la trazabilidad de información para residentes, administración y seguridad.",
+      techStack: ["PHP", "Laravel", "MySQL", "APIs REST", "Blade", "Bootstrap"],
+      image: "/images/projects/tucondominio/screenshot-1.png",
+      status: "En operación",
+      githubUrl: "",
+      liveUrl: "",
+      featured: true
     },
     {
       title: "Taller MVP",
-      id: "taller-mvp",
-      type: "Sistema de Negocio",
-      coverImage: "/images/projects/taller/Captura desde 2026-04-11 23-05-48.png",
-      imagePosition: "center",
-      description:
-        "Aplicación para gestión de órdenes de servicio y seguimiento de procesos internos de taller. El backend controla estados operativos, validaciones de captura y generación de información para atención al cliente.",
-      problem: "El flujo de atención presentaba retrasos y poca visibilidad sobre el estado real de cada orden, costos y tiempos de entrega.",
-      solution: "Se construyó un sistema con procesos estructurados por etapas, reglas de negocio en backend y reportes para estandarizar el seguimiento de cada servicio.",
-      contribution: "Implementación de módulos backend, lógica transaccional y consultas SQL para registrar, validar y consultar información operativa.",
-      impact: "Mejoró el control de órdenes y permitió seguimiento más claro de cada servicio desde recepción hasta entrega.",
+      category: "Sistema de Negocio",
+      description: "Aplicación para gestión de órdenes de servicio y seguimiento de procesos internos de taller.",
+      impact: "Mejoró el control de órdenes y permitió seguimiento claro de cada servicio desde recepción hasta entrega.",
       techStack: ["Java", "Spring Boot", "PostgreSQL", "SQL", "APIs REST"],
-      screenshots: [
-        "/images/projects/taller/Captura desde 2026-04-11 23-05-48.png",
-        "/images/projects/taller/Captura desde 2026-04-11 23-06-43.png",
-        "/images/projects/taller/Captura desde 2026-04-11 23-06-49.png",
-        "/images/projects/taller/Captura desde 2026-04-11 23-06-54.png",
-        "/images/projects/taller/Captura desde 2026-04-11 23-06-57.png",
-        "/images/projects/taller/Captura desde 2026-04-11 23-07-03.png",
-        "/images/projects/taller/Captura desde 2026-04-11 23-07-05.png",
-        "/images/projects/taller/Captura desde 2026-04-11 23-07-07.png"
-      ],
+      image: "/images/projects/taller/Captura desde 2026-04-11 23-05-48.png",
+      status: "MVP",
+      githubUrl: "",
+      liveUrl: "",
+      featured: true
     },
     {
       title: "Integraciones empresariales SOAP/XML",
-      id: "soap-xml",
-      type: "Integración Empresarial",
-      coverImage: "/images/projects/soap-diagram.png",
-      imagePosition: "center",
-      description:
-        "Desarrollo de integraciones backend con servicios SOAP y estructuras XML para intercambio de información entre plataformas empresariales y sistemas heredados.",
-      problem: "Los flujos de integración presentaban errores por diferencias en formatos, validaciones y reglas de comunicación entre sistemas.",
-      solution: "Se implementaron procesos de armado, validación y transformación de mensajes XML con manejo controlado de errores y trazabilidad de peticiones.",
-      contribution: "Construcción de servicios de integración en PHP para consumo de endpoints SOAP, procesamiento de respuesta y normalización de datos.",
+      category: "Integración Empresarial",
+      description: "Desarrollo de integraciones backend con servicios SOAP y estructuras XML para intercambio de información entre plataformas empresariales y sistemas heredados.",
       impact: "Permitió ejecutar integraciones de forma más estable y repetible en procesos críticos de intercambio de información.",
       techStack: ["PHP", "Laravel", "SOAP", "XML", "JSON", "SQL Server"],
-      screenshots: [],
+      image: "/images/projects/soap-diagram.png",
+      status: "Producción",
+      githubUrl: "",
+      liveUrl: "",
+      featured: false
     },
     {
       title: "APIs REST Core",
-      id: "api-rest",
-      type: "Backend e Integración",
-      coverImage: "/images/projects/api-diagram.png",
-      imagePosition: "center",
-      description:
-        "Conjunto de servicios REST para procesos core de negocio, diseñado para integrar aplicaciones internas y sistemas externos con contratos claros y mantenimiento continuo.",
-      problem: "La comunicación entre sistemas dependía de procesos manuales y puntos de integración aislados que dificultaban la operación diaria.",
-      solution: "Se definieron APIs REST versionadas para estandarizar el intercambio de datos, validar información de entrada y exponer operaciones clave de negocio.",
-      contribution: "Diseño y mantenimiento de endpoints backend, reglas de validación, consultas SQL y documentación técnica para equipos consumidores.",
+      category: "Backend e Integración",
+      description: "Conjunto de servicios REST para procesos core de negocio, diseñado para integrar aplicaciones internas y sistemas externos con contratos claros y mantenimiento continuo.",
       impact: "Facilitó la integración entre módulos y redujo fricción operativa al contar con servicios centralizados y mantenibles.",
       techStack: ["PHP", "Laravel", "APIs REST", "MySQL", "SQL Server", "Docker"],
-      screenshots: [],
+      image: "/images/projects/api-diagram.png",
+      status: "Producción",
+      githubUrl: "",
+      liveUrl: "",
+      featured: false
+    }
+  ],
+  skills: [
+    {
+      category: "Backend",
+      items: ["Java", "Spring Boot", "PHP", "Laravel", "Node.js", "APIs REST", "Microservicios", "Convex"]
     },
+    {
+      category: "Frontend",
+      items: ["HTML", "CSS", "JavaScript", "Tailwind CSS", "Bootstrap", "Blade", "React Native"]
+    },
+    {
+      category: "Bases de Datos",
+      items: ["MySQL", "PostgreSQL", "SQL", "Modelado relacional", "Optimización de consultas"]
+    },
+    {
+      category: "Cloud & DevOps",
+      items: ["Docker", "Kubernetes", "Git", "GitLab", "Linux", "Principios de AWS"]
+    },
+    {
+      category: "Testing & Calidad",
+      items: ["JUnit", "Testcontainers", "Pruebas unitarias", "Pruebas de integración"]
+    },
+    {
+      category: "CMS & Web",
+      items: ["WordPress", "Desarrollo de sitios web", "Optimización web básica"]
+    }
   ],
-  competencies: [
-    "Integración de APIs REST y SOAP",
-    "Construcción y mantenimiento de módulos de negocio",
-    "Validación y transformación de datos",
-    "Optimización de consultas SQL y soporte a producción",
-    "Trabajo colaborativo con equipos Agile y Scrum",
-  ],
+  cta: {
+    title: "¿Listo para escalar tu infraestructura?",
+    subtitle: "Actualmente abierto a nuevas oportunidades como Software Engineer o Backend Developer en equipos orientados al producto.",
+    email: "artglezrodriguez@gmail.com",
+    linkedin: "https://linkedin.com/in/tu-perfil",
+    github: "https://github.com/Jagr15"
+  }
 };
