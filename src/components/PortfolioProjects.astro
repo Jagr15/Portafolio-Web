@@ -14,28 +14,30 @@ const getStatusColor = (status: string) => {
 <section id="portfolio" class="py-24 relative z-10 border-t border-white/[0.02] bg-gradient-to-b from-transparent to-[#101011]">
   <div class="section-container">
     <div class="mb-16 md:mb-20 fade-up">
-      <h2 class="text-3xl md:text-4xl font-bold text-white mb-3 tracking-tight">Portfolio de Evidencias</h2>
+      <h2 class="text-3xl md:text-4xl font-bold text-white mb-3 tracking-tight">Portfolio de Proyectos</h2>
       <div class="w-12 h-1 bg-gradient-to-r from-amber-500 to-transparent rounded-full"></div>
       <p class="mt-5 text-zinc-400 text-lg max-w-2xl leading-relaxed">
-        Evidencia visual de proyectos backend, integraciones y demos desarrollados con buenas prácticas de ingeniería.
+        Proyectos reales, demos funcionales y evidencias visuales de sistemas web, integraciones y soluciones empresariales.
       </p>
     </div>
     
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 auto-rows-fr">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 auto-rows-fr">
       {profileData.portfolioProjects.map((project, idx) => {
         const isFeatured = project.featured;
         const statusStyle = getStatusColor(project.status);
+        const hasGallery = project.gallery && project.gallery.length > 0;
         
         return (
-          <div class={`glass-card ${isFeatured ? 'gradient-border-amber' : 'gradient-border-teal'} flex flex-col group transition-all duration-300 hover:bg-[#18181b]/90 hover:-translate-y-2 hover:shadow-[0_12px_40px_rgba(0,0,0,0.5)] fade-up delay-${(idx % 2) * 100} overflow-hidden`}>
+          <div class={`glass-card ${isFeatured ? 'gradient-border-amber md:col-span-2' : 'gradient-border-teal'} flex flex-col group transition-all duration-300 hover:bg-[#18181b]/90 hover:-translate-y-2 hover:shadow-[0_12px_40px_rgba(0,0,0,0.5)] fade-up delay-${(idx % 3) * 100} overflow-hidden`}>
             
-            <div class="w-full h-56 sm:h-64 relative overflow-hidden bg-[#0a0a0a]">
-               <div class="absolute inset-0 bg-gradient-to-t from-[#18181b] to-transparent opacity-80 z-10"></div>
+            <div class="w-full h-48 sm:h-56 relative overflow-hidden bg-[#0a0a0a]">
+               <div class="absolute inset-0 bg-gradient-to-t from-[#18181b] to-transparent opacity-80 z-10 pointer-events-none"></div>
                {project.image ? (
                  <img src={project.image} alt={`Captura de ${project.title}`} class="w-full h-full object-cover object-top opacity-60 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700" loading="lazy" />
                ) : (
                  <div class="w-full h-full flex flex-col items-center justify-center bg-zinc-900/50 opacity-60">
                    <svg class="w-8 h-8 text-zinc-600 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
+                   <span class="text-xs text-zinc-500 font-medium px-4 text-center">{project.title}</span>
                  </div>
                )}
                <div class="absolute top-4 left-4 z-20">
@@ -50,43 +52,35 @@ const getStatusColor = (status: string) => {
                </div>
             </div>
 
-            <div class="p-6 md:p-8 flex-1 flex flex-col relative z-20 -mt-6">
+            <div class="p-6 flex-1 flex flex-col relative z-20 -mt-6 bg-[#18181b]/80 backdrop-blur-sm rounded-t-2xl">
+              <h3 class="text-xl font-bold text-white tracking-tight group-hover:text-amber-200 transition-colors drop-shadow-md mb-3 line-clamp-2">{project.title}</h3>
               
-              <div class="flex justify-between items-start mb-3">
-                <h3 class="text-2xl font-bold text-white tracking-tight group-hover:text-amber-200 transition-colors drop-shadow-md">{project.title}</h3>
-                
-                <div class="flex space-x-2 text-zinc-500 ml-4 shrink-0">
-                  {project.githubUrl && (
-                    <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" class="hover:text-white hover:scale-110 transition-all focus:outline-none focus:ring-2 focus:ring-amber-500 rounded-sm" aria-label={`Ver código de ${project.title} en GitHub`}>
-                      <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"></path></svg>
-                    </a>
-                  )}
-                  {project.liveUrl && (
-                    <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" class="hover:text-white hover:scale-110 transition-all focus:outline-none focus:ring-2 focus:ring-amber-500 rounded-sm" aria-label={`Ver demo de ${project.title} en vivo`}>
-                      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
-                    </a>
-                  )}
-                </div>
-              </div>
+              <p class="text-zinc-400 text-sm leading-relaxed mb-6 flex-1 line-clamp-3">{project.description}</p>
               
-              <p class="text-zinc-400 text-sm leading-relaxed mb-6 flex-1">{project.description}</p>
-              
-              {project.impact && (
-                <div class={`p-4 rounded-xl bg-white/[0.02] border border-white/5 mb-6 transition-colors ${isFeatured ? 'group-hover:bg-amber-500/5 group-hover:border-amber-500/20' : 'group-hover:bg-teal-500/5 group-hover:border-teal-500/20'}`}>
-                  <span class={`text-[11px] font-semibold uppercase tracking-widest block mb-1 flex items-center ${isFeatured ? 'text-amber-400' : 'text-teal-400'}`}>
-                    <svg class="w-4 h-4 mr-1.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
-                    Impacto
-                  </span>
-                  <p class="text-zinc-300 text-sm leading-relaxed">{project.impact}</p>
-                </div>
-              )}
-              
-              <div class="flex flex-wrap gap-2 mt-auto pt-5 border-t border-white/5 relative z-10">
-                {project.techStack.map(tech => (
-                  <span class="text-[11px] font-medium text-zinc-400 bg-black/40 px-2.5 py-1 rounded-md border border-white/5 hover:bg-white/10 transition-colors">
+              <div class="flex flex-wrap gap-2 mb-6">
+                {project.techStack.slice(0, 5).map(tech => (
+                  <span class="text-[10px] font-medium text-zinc-400 bg-black/40 px-2 py-1 rounded-md border border-white/5 hover:bg-white/10 transition-colors">
                     {tech}
                   </span>
                 ))}
+                {project.techStack.length > 5 && (
+                  <span class="text-[10px] font-medium text-zinc-500 bg-black/40 px-2 py-1 rounded-md border border-white/5">
+                    +{project.techStack.length - 5}
+                  </span>
+                )}
+              </div>
+
+              <div class="mt-auto pt-4 border-t border-white/5">
+                <button 
+                  class="project-modal-trigger w-full py-2.5 px-4 bg-white/5 hover:bg-white/10 border border-white/10 rounded-lg text-sm font-semibold text-white transition-all flex items-center justify-center group/btn focus:outline-none focus:ring-2 focus:ring-amber-500"
+                  data-project-index={idx}
+                  aria-label={`Ver detalles de ${project.title}`}
+                >
+                  <svg class="w-4 h-4 mr-2 text-amber-400 group-hover/btn:scale-110 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4" />
+                  </svg>
+                  {hasGallery ? 'Ver galería y detalles' : 'Ver proyecto'}
+                </button>
               </div>
             </div>
           </div>
@@ -94,4 +88,290 @@ const getStatusColor = (status: string) => {
       })}
     </div>
   </div>
+
+  <!-- Global Modal (Hidden by default) -->
+  <div id="project-modal" class="fixed inset-0 z-[100] hidden opacity-0 transition-opacity duration-300" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="absolute inset-0 bg-black/80 backdrop-blur-sm modal-backdrop cursor-pointer" aria-hidden="true"></div>
+    <div class="absolute inset-0 overflow-y-auto pointer-events-none">
+      <div class="flex min-h-full items-center justify-center p-4 sm:p-6 md:p-8 pointer-events-none">
+        
+        <div class="relative w-full max-w-6xl bg-[#121214] border border-white/10 rounded-2xl shadow-2xl overflow-hidden flex flex-col lg:flex-row transform scale-95 transition-transform duration-300 pointer-events-auto" id="modal-content-container">
+          
+          <!-- Close button -->
+          <button class="absolute top-4 right-4 z-50 p-2 bg-black/50 hover:bg-black border border-white/10 hover:border-white/30 rounded-full text-zinc-400 hover:text-white transition-all modal-close focus:outline-none focus:ring-2 focus:ring-amber-500" aria-label="Cerrar modal">
+            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+          </button>
+
+          <!-- Left: Gallery Section -->
+          <div class="w-full lg:w-3/5 bg-[#050505] flex flex-col border-b lg:border-b-0 lg:border-r border-white/10">
+            <div class="flex-1 relative min-h-[300px] sm:min-h-[400px] lg:min-h-[500px] flex items-center justify-center p-4 md:p-8 bg-black/50">
+               <img id="modal-main-image" src="" alt="Imagen principal del proyecto" class="w-full h-full object-contain drop-shadow-2xl transition-opacity duration-300" />
+               <div id="modal-no-image" class="hidden w-full h-full flex flex-col items-center justify-center text-zinc-500">
+                  <svg class="w-16 h-16 mb-4 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                  <span class="text-sm font-medium" id="modal-no-image-text">Sin evidencia visual</span>
+               </div>
+            </div>
+            
+            <div id="modal-gallery-container" class="bg-[#0a0a0a] border-t border-white/5 p-4 hidden">
+              <div class="flex gap-3 overflow-x-auto pb-2 snap-x custom-scrollbar" id="modal-thumbnails">
+                <!-- Thumbnails injected via JS -->
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: Info Section -->
+          <div class="w-full lg:w-2/5 p-6 sm:p-8 bg-gradient-to-br from-[#121214] to-[#18181b] overflow-y-auto custom-scrollbar lg:max-h-[85vh]">
+            <div class="flex flex-wrap gap-2 mb-5" id="modal-badges">
+               <!-- Badges injected via JS -->
+            </div>
+            
+            <h3 id="modal-title" class="text-2xl md:text-3xl font-bold text-white tracking-tight mb-4 drop-shadow-sm leading-tight">Título</h3>
+            
+            <p id="modal-description" class="text-zinc-300 text-sm md:text-base leading-relaxed mb-8">Descripción</p>
+            
+            <div id="modal-details" class="space-y-6 mb-8">
+              <!-- Technical details injected via JS -->
+            </div>
+            
+            <div class="mb-8">
+              <h4 class="text-xs font-bold text-zinc-500 uppercase tracking-widest mb-3">Stack Tecnológico</h4>
+              <div id="modal-tech-stack" class="flex flex-wrap gap-2">
+                <!-- Tech stack injected via JS -->
+              </div>
+            </div>
+            
+            <div id="modal-links" class="flex flex-wrap gap-3 pt-6 border-t border-white/10 hidden">
+              <!-- Links injected via JS -->
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
+
+<style>
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 4px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.2);
+  }
+</style>
+
+<script>
+  // Safe JSON injection
+  const profileDataEl = document.querySelector('script[data-projects]');
+  let projectsData = [];
+  
+  // Since Astro runs this script on the client, we can inject data as a variable, 
+  // but it's safer to pass it inline to avoid escaping issues in strict mode:
+</script>
+
+<script define:vars={{ projectsData: profileData.portfolioProjects }}>
+  const modal = document.getElementById('project-modal');
+  const modalContainer = document.getElementById('modal-content-container');
+  const backdrops = document.querySelectorAll('.modal-backdrop, .modal-close');
+  
+  // UI Elements
+  const modalTitle = document.getElementById('modal-title');
+  const modalDescription = document.getElementById('modal-description');
+  const modalBadges = document.getElementById('modal-badges');
+  const modalDetails = document.getElementById('modal-details');
+  const modalTechStack = document.getElementById('modal-tech-stack');
+  const modalLinks = document.getElementById('modal-links');
+  const mainImage = document.getElementById('modal-main-image');
+  const noImage = document.getElementById('modal-no-image');
+  const noImageText = document.getElementById('modal-no-image-text');
+  const galleryContainer = document.getElementById('modal-gallery-container');
+  const thumbnailsContainer = document.getElementById('modal-thumbnails');
+  
+  // Helper for colors
+  const getStatusColor = (status) => {
+    const s = status.toLowerCase();
+    if (s.includes('producción') || s.includes('operación')) return 'text-emerald-400 bg-emerald-400/10 border-emerald-400/20';
+    if (s.includes('desarrollo')) return 'text-amber-400 bg-amber-400/10 border-amber-400/20';
+    if (s.includes('mvp')) return 'text-violet-400 bg-violet-400/10 border-violet-400/20';
+    return 'text-teal-400 bg-teal-400/10 border-teal-400/20';
+  };
+
+  const openModal = (projectIndex) => {
+    const project = projectsData[projectIndex];
+    if (!project) return;
+    
+    // Fill Text
+    modalTitle.textContent = project.title;
+    modalDescription.textContent = project.description;
+    
+    // Badges
+    const statusStyle = getStatusColor(project.status);
+    modalBadges.innerHTML = `
+      <span class="inline-flex items-center px-3 py-1 bg-white/5 border border-white/10 text-xs font-semibold text-zinc-200 rounded-full">
+        ${project.category}
+      </span>
+      <span class="inline-flex items-center px-2.5 py-1 border text-[10px] font-bold uppercase tracking-widest rounded-md ${statusStyle}">
+        ${project.status}
+      </span>
+    `;
+    
+    // Details (Problem, Solution, Architecture, Impact)
+    let detailsHtml = '';
+    if (project.problem) {
+      detailsHtml += `<div><strong class="text-zinc-200 block mb-1 text-sm">El Desafío</strong><p class="text-zinc-400 text-sm leading-relaxed">${project.problem}</p></div>`;
+    }
+    if (project.solution) {
+      detailsHtml += `<div><strong class="text-zinc-200 block mb-1 text-sm">La Solución</strong><p class="text-zinc-400 text-sm leading-relaxed">${project.solution}</p></div>`;
+    }
+    if (project.architecture) {
+      detailsHtml += `<div><strong class="text-zinc-200 block mb-1 text-sm">Arquitectura</strong><p class="text-zinc-400 text-sm leading-relaxed">${project.architecture}</p></div>`;
+    }
+    if (project.impact) {
+      const icon = `<svg class="w-4 h-4 mr-1.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>`;
+      const colorClass = project.featured ? 'text-amber-400' : 'text-teal-400';
+      const bgClass = project.featured ? 'bg-amber-500/5 border-amber-500/20' : 'bg-teal-500/5 border-teal-500/20';
+      
+      detailsHtml += `
+        <div class="p-4 rounded-xl border transition-colors ${bgClass}">
+          <span class="text-[11px] font-semibold uppercase tracking-widest block mb-2 flex items-center ${colorClass}">
+            ${icon} Impacto
+          </span>
+          <p class="text-zinc-300 text-sm leading-relaxed">${project.impact}</p>
+        </div>
+      `;
+    }
+    modalDetails.innerHTML = detailsHtml;
+    
+    // Tech Stack
+    modalTechStack.innerHTML = project.techStack.map(tech => 
+      `<span class="text-[11px] font-medium text-zinc-300 bg-black/40 px-2.5 py-1.5 rounded-md border border-white/10">${tech}</span>`
+    ).join('');
+    
+    // Links
+    let linksHtml = '';
+    if (project.githubUrl) {
+      linksHtml += `
+        <a href="${project.githubUrl}" target="_blank" rel="noopener noreferrer" class="flex-1 flex justify-center items-center px-4 py-2.5 bg-white/5 hover:bg-white/10 border border-white/10 rounded-lg text-sm font-medium text-white transition-colors focus:outline-none focus:ring-2 focus:ring-white/20">
+          <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"></path></svg>
+          Ver Código
+        </a>
+      `;
+    }
+    if (project.liveUrl) {
+      linksHtml += `
+        <a href="${project.liveUrl}" target="_blank" rel="noopener noreferrer" class="flex-1 flex justify-center items-center px-4 py-2.5 bg-amber-500 hover:bg-amber-400 text-black rounded-lg text-sm font-bold transition-colors shadow-[0_0_15px_rgba(245,158,11,0.3)] focus:outline-none focus:ring-2 focus:ring-amber-500 focus:ring-offset-2 focus:ring-offset-[#18181b]">
+          <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+          Visitar Proyecto
+        </a>
+      `;
+    }
+    if (linksHtml) {
+      modalLinks.innerHTML = linksHtml;
+      modalLinks.classList.remove('hidden');
+    } else {
+      modalLinks.classList.add('hidden');
+    }
+    
+    // Gallery & Main Image
+    const allImages = [];
+    if (project.image) allImages.push(project.image);
+    if (project.gallery && project.gallery.length > 0) {
+      allImages.push(...project.gallery);
+    }
+    
+    if (allImages.length > 0) {
+      mainImage.src = allImages[0];
+      mainImage.classList.remove('hidden');
+      noImage.classList.add('hidden');
+      
+      if (allImages.length > 1) {
+        galleryContainer.classList.remove('hidden');
+        thumbnailsContainer.innerHTML = allImages.map((img, i) => `
+          <button class="gallery-thumb focus:outline-none flex-shrink-0 w-20 h-14 rounded-md overflow-hidden border-2 transition-all snap-center ${i === 0 ? 'border-amber-500 opacity-100' : 'border-transparent opacity-50 hover:opacity-100'}" data-img-src="${img}">
+            <img src="${img}" alt="Evidencia ${i+1}" class="w-full h-full object-cover" loading="lazy" />
+          </button>
+        `).join('');
+        
+        // Add listeners to thumbs
+        document.querySelectorAll('.gallery-thumb').forEach(thumb => {
+          thumb.addEventListener('click', (e) => {
+            const src = e.currentTarget.getAttribute('data-img-src');
+            
+            // simple crossfade effect
+            mainImage.classList.add('opacity-50');
+            setTimeout(() => {
+              mainImage.src = src;
+              mainImage.classList.remove('opacity-50');
+            }, 150);
+            
+            // Update active state
+            document.querySelectorAll('.gallery-thumb').forEach(t => {
+              t.classList.remove('border-amber-500', 'opacity-100');
+              t.classList.add('border-transparent', 'opacity-50');
+            });
+            e.currentTarget.classList.add('border-amber-500', 'opacity-100');
+            e.currentTarget.classList.remove('border-transparent', 'opacity-50');
+          });
+        });
+      } else {
+        galleryContainer.classList.add('hidden');
+      }
+    } else {
+      mainImage.classList.add('hidden');
+      mainImage.src = '';
+      noImageText.textContent = project.title;
+      noImage.classList.remove('hidden');
+      galleryContainer.classList.add('hidden');
+    }
+
+    // Show Modal
+    modal.classList.remove('hidden');
+    document.body.style.overflow = 'hidden'; // Lock scroll
+    
+    // Trigger animation
+    requestAnimationFrame(() => {
+      modal.classList.remove('opacity-0');
+      modalContainer.classList.remove('scale-95');
+      modalContainer.classList.add('scale-100');
+    });
+  };
+
+  const closeModal = () => {
+    modal.classList.add('opacity-0');
+    modalContainer.classList.remove('scale-100');
+    modalContainer.classList.add('scale-95');
+    
+    setTimeout(() => {
+      modal.classList.add('hidden');
+      document.body.style.overflow = ''; // Unlock scroll
+      mainImage.src = ''; // Clear memory
+    }, 300); // match transition duration
+  };
+
+  // Event Listeners
+  document.querySelectorAll('.project-modal-trigger').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      const idx = e.currentTarget.getAttribute('data-project-index');
+      openModal(idx);
+    });
+  });
+
+  backdrops.forEach(el => {
+    el.addEventListener('click', closeModal);
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+      closeModal();
+    }
+  });
+</script>
