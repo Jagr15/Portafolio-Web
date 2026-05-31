@@ -161,7 +161,6 @@ export const profileData = {
       techStack: ["PHP", "Laravel", "MySQL", "APIs REST", "Blade", "Bootstrap"],
       image: "/images/projects/tucondominio/screenshot-1.png",
       gallery: [
-        "/projects/tucondominio_app.png",
         "/images/projects/tucondominio/screenshot-2.png",
         "/images/projects/tucondominio/screenshot-3.png",
         "/images/projects/tucondominio/screenshot-4.png",
@@ -228,6 +227,158 @@ export const profileData = {
       featured: false,
       githubUrl: "",
       liveUrl: ""
+    }
+  ],
+  certifications: [
+    {
+      title: "Cloud Computing",
+      issuer: "",
+      category: "Cloud & Infrastructure",
+      year: "",
+      description: "Fundamentos de computación en la nube, servicios cloud, escalabilidad e infraestructura moderna para aplicaciones web.",
+      skills: ["Cloud Computing", "Infrastructure", "Scalability", "Digital Services"],
+      fileUrl: "/certifications/Cloud Computing.pdf",
+      featured: true
+    },
+    {
+      title: "Backend Development: Node.js, Express, MongoDB & REST APIs",
+      issuer: "",
+      category: "Backend Development",
+      year: "",
+      description: "Desarrollo de APIs REST y servicios backend con Node.js, Express y MongoDB, enfocado en arquitectura de servicios web.",
+      skills: ["Node.js", "Express", "MongoDB", "REST APIs", "Backend"],
+      fileUrl: "/certifications/Backend Development_ Node.js, Express, MongoDB & REST APIs.pdf",
+      featured: true
+    },
+    {
+      title: "Python Essentials 1",
+      issuer: "",
+      category: "Programming",
+      year: "",
+      description: "Fundamentos de programación con Python, estructuras de control, funciones y lógica aplicada al desarrollo de software.",
+      skills: ["Python", "Programming Fundamentals", "Logic", "Automation"],
+      fileUrl: "/certifications/Python_Essentials_1_certificate.pdf",
+      featured: true
+    },
+    {
+      title: "DOMINA EL ANÁLISIS CON SQL",
+      issuer: "",
+      category: "Databases & Analytics",
+      year: "",
+      description: "Uso de SQL para extracción, análisis y transformación de información orientada a toma de decisiones y consultas relacionales.",
+      skills: ["SQL", "Data Analysis", "Queries", "Databases"],
+      fileUrl: "/certifications/DOMINA EL ANÁLISIS CON SQL_ Extracción,  transformación y optimización..pdf",
+      featured: true
+    },
+    {
+      title: "React en Acción",
+      issuer: "",
+      category: "Frontend Development",
+      year: "",
+      description: "Desarrollo de interfaces modernas con React, componentes reutilizables, manejo de estado y construcción de aplicaciones frontend.",
+      skills: ["React", "JavaScript", "Components", "Frontend"],
+      fileUrl: "/certifications/React en acción_.pdf",
+      featured: true
+    },
+    {
+      title: "The Bits and Bytes of Computer Networking",
+      issuer: "",
+      category: "Networking",
+      year: "",
+      description: "Fundamentos de redes, comunicación entre sistemas, TCP/IP, DNS y conceptos esenciales de infraestructura digital.",
+      skills: ["Networking", "TCP/IP", "DNS", "Infrastructure"],
+      fileUrl: "/certifications/The Bits and Bytes of Computer Networking.pdf",
+      featured: true
+    },
+    {
+      title: "Web Development Mastery: HTML, CSS & JavaScript Fundamentals",
+      issuer: "",
+      category: "Frontend Development",
+      year: "",
+      description: "Fundamentos de desarrollo web con HTML, CSS y JavaScript para creación de interfaces responsive.",
+      skills: ["HTML", "CSS", "JavaScript", "Web Development"],
+      fileUrl: "/certifications/Web Development Mastery_ HTML, CSS & JavaScript Fundamentals.pdf",
+      featured: false
+    },
+    {
+      title: "Curso de Introducción al Desarrollo Web (1/2)",
+      issuer: "",
+      category: "Web Development",
+      year: "",
+      description: "Bases de desarrollo web, estructura HTML, estilos CSS y fundamentos de maquetación.",
+      skills: ["HTML", "CSS", "Web Fundamentals"],
+      fileUrl: "/certifications/Curso de introducción al desarrollo  web_ HTML y CSS (1_2).pdf",
+      featured: false
+    },
+    {
+      title: "Curso de Introducción al Desarrollo Web (2/2)",
+      issuer: "",
+      category: "Web Development",
+      year: "",
+      description: "Continuación del desarrollo web frontend, buenas prácticas de maquetación y construcción de páginas web.",
+      skills: ["HTML", "CSS", "Responsive Design"],
+      fileUrl: "/certifications/Curso de introducción al desarrollo  web_ HTML y CSS (2_2).pdf",
+      featured: false
+    },
+    {
+      title: "PHP Mastery: Build Web Apps",
+      issuer: "",
+      category: "Backend Development",
+      year: "",
+      description: "Desarrollo de aplicaciones web con PHP, lógica backend y fundamentos para construcción de sistemas dinámicos.",
+      skills: ["PHP", "Backend", "Web Apps"],
+      fileUrl: "/certifications/PHP Mastery_ Build Web Apps.pdf",
+      featured: false
+    },
+    {
+      title: "SQL Para Principiantes",
+      issuer: "",
+      category: "Databases",
+      year: "",
+      description: "Fundamentos de SQL, consultas básicas, operaciones CRUD y manejo inicial de bases de datos relacionales.",
+      skills: ["SQL", "Databases", "CRUD"],
+      fileUrl: "/certifications/SQL Para Principiantes.pdf",
+      featured: false
+    },
+    {
+      title: "Power BI",
+      issuer: "",
+      category: "Data & Reporting",
+      year: "",
+      description: "Creación de dashboards, visualización de datos y reportes para análisis de información.",
+      skills: ["Power BI", "Dashboards", "Reporting", "Data Visualization"],
+      fileUrl: "/certifications/Power Bi.pdf",
+      featured: false
+    },
+    {
+      title: "Business Analytics en Big Data",
+      issuer: "",
+      category: "Data & Analytics",
+      year: "",
+      description: "Aplicación de análisis empresarial y uso de datos para toma de decisiones en contextos de Big Data.",
+      skills: ["Business Analytics", "Big Data", "Data Analysis"],
+      fileUrl: "/certifications/Business Analytics en Big Data.pdf",
+      featured: false
+    },
+    {
+      title: "Big Data Fundamentals",
+      issuer: "",
+      category: "Data & Analytics",
+      year: "",
+      description: "Fundamentos del ecosistema Big Data, procesamiento de datos y conceptos clave de análisis a gran escala.",
+      skills: ["Big Data", "Data Processing", "Analytics"],
+      fileUrl: "/certifications/Big Data Fundamentals.pdf",
+      featured: false
+    },
+    {
+      title: "Protege tu Negocio: Ciberseguridad en el Teletrabajo",
+      issuer: "",
+      category: "Cybersecurity",
+      year: "",
+      description: "Buenas prácticas de seguridad digital, protección de información y prevención de riesgos en entornos remotos.",
+      skills: ["Cybersecurity", "Remote Work Security", "Risk Prevention"],
+      fileUrl: "/certifications/Protege tu Negocio_ Ciberseguridad en  el Teletrabajo.pdf",
+      featured: false
     }
   ],
   skills: [

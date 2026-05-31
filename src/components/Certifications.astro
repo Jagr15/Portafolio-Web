@@ -1,0 +1,100 @@
+---
+import { profileData } from '../data/profile.data';
+
+const featuredCerts = profileData.certifications.filter(c => c.featured);
+const regularCerts = profileData.certifications.filter(c => !c.featured);
+---
+
+<section id="certificaciones" class="py-24 relative z-10 border-t border-white/[0.02] bg-gradient-to-b from-transparent to-[#101011]">
+  <div class="section-container">
+    <div class="mb-16 md:mb-20 fade-up">
+      <h2 class="text-3xl md:text-4xl font-bold text-white mb-3 tracking-tight">Certificaciones y Formación</h2>
+      <div class="w-12 h-1 bg-gradient-to-r from-violet-500 to-transparent rounded-full"></div>
+      <p class="mt-5 text-zinc-400 text-lg max-w-2xl leading-relaxed">
+        Formación complementaria en backend, cloud, bases de datos, frontend, redes y analítica.
+      </p>
+    </div>
+
+    <!-- Featured Certifications -->
+    {featuredCerts.length > 0 && (
+      <div class="mb-16">
+        <h3 class="text-xl font-semibold text-zinc-200 mb-8 flex items-center">
+          <svg class="w-5 h-5 mr-2 text-amber-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+          Certificaciones Destacadas
+        </h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {featuredCerts.map((cert, idx) => (
+            <div class={`glass-card gradient-border-violet p-6 flex flex-col fade-up delay-${(idx % 2) * 100} group transition-all duration-300 hover:bg-[#18181b]/90 hover:-translate-y-1 hover:shadow-[0_8px_30px_rgba(139,92,246,0.15)]`}>
+              <div class="flex flex-wrap justify-between items-start gap-4 mb-4">
+                <span class="inline-flex items-center px-2.5 py-1 bg-white/5 border border-white/10 text-[10px] font-semibold text-zinc-300 rounded-full">
+                  {cert.category}
+                </span>
+                {cert.fileUrl && (
+                  <a href={cert.fileUrl} target="_blank" rel="noopener noreferrer" class="text-violet-400 hover:text-violet-300 text-sm font-medium flex items-center transition-colors group/link" aria-label={`Ver certificado de ${cert.title}`}>
+                    Ver certificado
+                    <svg class="w-4 h-4 ml-1 transform group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                  </a>
+                )}
+              </div>
+              
+              <h4 class="text-xl font-bold text-white tracking-tight mb-3 group-hover:text-violet-200 transition-colors line-clamp-2">{cert.title}</h4>
+              
+              <p class="text-zinc-400 text-sm leading-relaxed mb-6 flex-1">{cert.description}</p>
+              
+              <div class="flex flex-wrap gap-2 mt-auto pt-4 border-t border-white/5">
+                {cert.skills.map(skill => (
+                  <span class="text-[10px] font-medium text-zinc-400 bg-black/40 px-2 py-1 rounded-md border border-white/5 hover:bg-white/10 transition-colors">
+                    {skill}
+                  </span>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    )}
+
+    <!-- Regular Certifications -->
+    {regularCerts.length > 0 && (
+      <div>
+        <h3 class="text-lg font-semibold text-zinc-300 mb-6 flex items-center">
+          <svg class="w-5 h-5 mr-2 text-teal-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+          Formación Adicional
+        </h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+          {regularCerts.map((cert, idx) => (
+            <div class={`glass-card p-5 flex flex-col border border-white/5 fade-up delay-${(idx % 3) * 100} transition-all duration-300 hover:border-teal-500/30 hover:bg-[#18181b]/60`}>
+              <div class="mb-3">
+                <span class="text-[10px] font-semibold text-teal-400/80 uppercase tracking-widest block mb-2">{cert.category}</span>
+                <h4 class="text-base font-bold text-zinc-100 leading-snug line-clamp-2">{cert.title}</h4>
+              </div>
+              
+              <p class="text-zinc-500 text-xs leading-relaxed mb-4 flex-1 line-clamp-3">{cert.description}</p>
+              
+              <div class="flex items-center justify-between mt-auto pt-4 border-t border-white/5">
+                <div class="flex -space-x-1 overflow-hidden">
+                  {cert.skills.slice(0, 3).map(skill => (
+                    <div class="inline-block px-2 py-0.5 rounded text-[9px] font-medium bg-zinc-800 text-zinc-300 border border-zinc-700 whitespace-nowrap" title={skill}>
+                      {skill.length > 12 ? skill.substring(0, 12) + '...' : skill}
+                    </div>
+                  ))}
+                  {cert.skills.length > 3 && (
+                    <div class="inline-block px-1.5 py-0.5 rounded text-[9px] font-medium bg-zinc-800 text-zinc-400 border border-zinc-700">
+                      +{cert.skills.length - 3}
+                    </div>
+                  )}
+                </div>
+                
+                {cert.fileUrl && (
+                  <a href={cert.fileUrl} target="_blank" rel="noopener noreferrer" class="ml-3 p-1.5 rounded bg-white/5 hover:bg-white/10 text-zinc-400 hover:text-teal-400 transition-colors" aria-label={`Descargar ${cert.title}`} title="Ver certificado">
+                    <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                  </a>
+                )}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    )}
+  </div>
+</section>
